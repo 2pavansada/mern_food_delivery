@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 48" fill="none">
+  <!-- Brand Icon -->
+  <g transform="translate(2, 4)">
+    <rect width="40" height="40" rx="12" fill="#F97316"/>
+    <!-- Bowl base -->
+    <path d="M10 20C10 27.5 14.5 31.5 20 31.5C25.5 31.5 30 27.5 30 20H10Z" fill="#FFF7ED"/>
+    <!-- Smile in bowl -->
+    <path d="M15 22.5C17 25 23 25 25 22.5" stroke="#F97316" stroke-width="2" stroke-linecap="round"/>
+    <!-- Steam -->
+    <path d="M14 15C14 12 16 11 16 9" stroke="#FFF7ED" stroke-width="2" stroke-linecap="round"/>
+    <path d="M20 15C20 11 22 10 22 8" stroke="#FFF7ED" stroke-width="2" stroke-linecap="round"/>
+    <path d="M26 15C26 12 28 11 28 9" stroke="#FFF7ED" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="52" y="32" font-family="'Plus Jakarta Sans', 'Outfit', sans-serif" font-size="26" font-weight="800" letter-spacing="-0.5">
+    <tspan fill="#171717">BITE</tspan><tspan fill="#F97316">ZY</tspan>
+  </text>
+  <!-- Dot accent -->
+  <circle cx="152" cy="30" r="3.5" fill="#F97316"/>
+</svg>

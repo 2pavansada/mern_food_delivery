@@ -1,0 +1,233 @@
+.app-download-section {
+  padding: 40px 0 60px;
+}
+
+.app-download-card {
+  background: linear-gradient(135deg, #171717 0%, #262626 100%);
+  border-radius: var(--radius-xl, 28px);
+  padding: 48px 56px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+}
+
+.app-download-card::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.app-download-content {
+  color: var(--white, #FFFFFF);
+  z-index: 2;
+}
+
+.app-pill {
+  display: inline-block;
+  background-color: rgba(249, 115, 22, 0.2);
+  color: var(--primary-orange, #F97316);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  padding: 4px 14px;
+  border-radius: var(--radius-full, 9999px);
+  margin-bottom: 16px;
+}
+
+.app-title {
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+  font-size: clamp(26px, 3.2vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.app-subtitle {
+  font-size: 15px;
+  color: #D1D5DB;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 480px;
+}
+
+.app-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.app-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #F3F4F6;
+}
+
+.feature-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--primary-orange, #F97316);
+  color: var(--white, #FFFFFF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.app-download-platforms {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.store-badge-link {
+  display: inline-block;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.store-badge-link:hover {
+  transform: translateY(-3px);
+  opacity: 0.95;
+}
+
+.store-badge-link img {
+  height: 44px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Phone Mockup Frame */
+.app-download-mockup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.phone-mockup-frame {
+  width: 220px;
+  height: 340px;
+  background-color: #0F0F0F;
+  border: 8px solid #333333;
+  border-radius: 36px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.mockup-header-notch {
+  width: 70px;
+  height: 14px;
+  background-color: #333333;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mockup-screen-content {
+  padding-top: 18px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mockup-logo-mini {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--primary-orange, #F97316);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.mockup-dish-card {
+  background-color: #1F2937;
+  border-radius: 16px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mockup-dish-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--success-green, #22A06B);
+  background-color: rgba(34, 160, 107, 0.15);
+  padding: 3px 8px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.mockup-dish-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.mockup-progress {
+  height: 4px;
+  background-color: #374151;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.mockup-progress-fill {
+  width: 70%;
+  height: 100%;
+  background-color: var(--primary-orange, #F97316);
+  border-radius: 2px;
+}
+
+.mockup-eta {
+  font-size: 11px;
+  color: #9CA3AF;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .app-download-card {
+    grid-template-columns: 1fr;
+    padding: 36px 28px;
+    text-align: center;
+  }
+
+  .app-download-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app-download-platforms {
+    justify-content: center;
+  }
+
+  .app-download-mockup {
+    display: none;
+  }
+}

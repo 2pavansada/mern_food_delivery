@@ -1,0 +1,119 @@
+.food-display-section {
+  padding: 30px 0 50px;
+}
+
+.food-display-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.food-display-title {
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+  font-size: clamp(24px, 2.8vw, 32px);
+  font-weight: 800;
+  color: var(--dark-charcoal, #171717);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.food-display-subtitle {
+  font-size: 14px;
+  color: var(--secondary-text, #737373);
+}
+
+/* Active Filter Chips */
+.active-filters-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--warm-cream, #FFF7ED);
+  border: 1px solid var(--border-warm, #FED7AA);
+  color: var(--primary-orange, #F97316);
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full, 9999px);
+}
+
+.filter-chip button {
+  background: none;
+  border: none;
+  color: var(--primary-orange, #F97316);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0 2px;
+  display: flex;
+  align-items: center;
+}
+
+.clear-all-filters-btn {
+  background: none;
+  border: none;
+  color: var(--secondary-text, #737373);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 4px 6px;
+}
+
+.clear-all-filters-btn:hover {
+  color: var(--primary-orange, #F97316);
+}
+
+/* Food Grid */
+.food-display-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px;
+  row-gap: 36px;
+}
+
+/* Empty State */
+.food-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px dashed var(--border-subtle, #E5E7EB);
+  border-radius: var(--radius-xl, 28px);
+  max-width: 540px;
+  margin: 30px auto;
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.empty-state-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--dark-charcoal, #171717);
+  margin-bottom: 8px;
+}
+
+.empty-state-text {
+  font-size: 14px;
+  color: var(--secondary-text, #737373);
+  max-width: 400px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .food-display-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    row-gap: 24px;
+  }
+}

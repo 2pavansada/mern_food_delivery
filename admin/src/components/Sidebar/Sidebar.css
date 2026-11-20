@@ -1,0 +1,121 @@
+.admin-sidebar {
+  width: 250px;
+  background-color: var(--white, #FFFFFF);
+  border-right: 1px solid var(--border-subtle, #E5E7EB);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 16px;
+  min-height: calc(100vh - 70px);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+  flex-shrink: 0;
+}
+
+.admin-sidebar.collapsed {
+  width: 76px;
+  padding: 24px 10px;
+}
+
+.sidebar-section-heading {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--secondary-text, #737373);
+  padding: 0 12px 14px;
+}
+
+.sidebar-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md, 14px);
+  color: var(--secondary-text, #737373);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.admin-sidebar.collapsed .sidebar-nav-link {
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.sidebar-nav-link:hover {
+  background-color: var(--warm-cream, #FFF7ED);
+  color: var(--primary-orange, #F97316);
+}
+
+.sidebar-nav-link.active {
+  background-color: var(--primary-orange, #F97316);
+  color: var(--white, #FFFFFF);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Bottom Card */
+.sidebar-brand-card {
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+  border: 1px solid var(--border-warm, #FED7AA);
+  border-radius: var(--radius-md, 14px);
+  padding: 14px 16px;
+}
+
+.brand-card-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--primary-orange, #F97316);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
+}
+
+.brand-card-content strong {
+  font-size: 13px;
+  color: var(--dark-charcoal, #171717);
+  display: block;
+}
+
+.brand-card-content p {
+  font-size: 11px;
+  color: var(--secondary-text, #737373);
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    position: fixed;
+    top: 70px;
+    left: -250px;
+    z-index: 40;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .admin-sidebar.collapsed {
+    left: 0;
+    width: 250px;
+  }
+}

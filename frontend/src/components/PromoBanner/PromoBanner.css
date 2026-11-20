@@ -1,0 +1,111 @@
+.promo-banner {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+  border: 1.5px solid var(--border-warm, #FED7AA);
+  border-radius: var(--radius-xl, 28px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.1);
+}
+
+.promo-banner::after {
+  content: '🍔';
+  position: absolute;
+  right: -20px;
+  bottom: -30px;
+  font-size: 140px;
+  opacity: 0.12;
+  pointer-events: none;
+  transform: rotate(-15deg);
+}
+
+.promo-banner-content {
+  max-width: 600px;
+  z-index: 1;
+}
+
+.promo-pill {
+  display: inline-block;
+  background-color: var(--primary-orange, #F97316);
+  color: var(--white, #FFFFFF);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full, 9999px);
+  margin-bottom: 12px;
+}
+
+.promo-title {
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 800;
+  color: var(--dark-charcoal, #171717);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.promo-subtitle {
+  font-size: 14px;
+  color: var(--secondary-text, #737373);
+}
+
+.promo-action {
+  z-index: 1;
+}
+
+.promo-code-box {
+  display: flex;
+  align-items: center;
+  background: var(--white, #FFFFFF);
+  border: 2px dashed var(--primary-orange, #F97316);
+  border-radius: var(--radius-full, 9999px);
+  padding: 6px 6px 6px 20px;
+  gap: 12px;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.15);
+}
+
+.code-text {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--dark-charcoal, #171717);
+}
+
+.copy-btn {
+  background-color: var(--primary-orange, #F97316);
+  color: var(--white, #FFFFFF);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: var(--radius-full, 9999px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  background-color: var(--primary-orange-hover, #EA580C);
+}
+
+@media (max-width: 768px) {
+  .promo-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
+
+  .promo-action {
+    width: 100%;
+  }
+
+  .promo-code-box {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

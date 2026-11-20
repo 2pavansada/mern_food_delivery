@@ -1,0 +1,262 @@
+.food-list-page {
+  animation: fadeIn 0.25s ease;
+}
+
+.inventory-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.search-input-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--border-subtle, #E5E7EB);
+  border-radius: var(--radius-full, 9999px);
+  padding: 8px 16px;
+  min-width: 260px;
+}
+
+.search-input-box input {
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  color: var(--dark-charcoal, #171717);
+  width: 100%;
+}
+
+.category-select-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--white, #FFFFFF);
+  border: 1.5px solid var(--border-subtle, #E5E7EB);
+  border-radius: var(--radius-full, 9999px);
+  padding: 6px 16px;
+  font-size: 13px;
+}
+
+.category-select-box label {
+  color: var(--secondary-text, #737373);
+  font-weight: 600;
+}
+
+.category-select-box select {
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  color: var(--dark-charcoal, #171717);
+  cursor: pointer;
+}
+
+.inventory-count-pill {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--secondary-text, #737373);
+}
+
+.inventory-card {
+  background-color: var(--white, #FFFFFF);
+  border: 1px solid var(--border-subtle, #E5E7EB);
+  border-radius: var(--radius-xl, 24px);
+  padding: 24px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+}
+
+.table-dish-thumbnail {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md, 12px);
+  object-fit: cover;
+  background-color: var(--warm-cream, #FFF7ED);
+  border: 1px solid var(--border-subtle, #E5E7EB);
+  transition: transform 0.2s ease;
+}
+
+.table-dish-thumbnail:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dish-name-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-width: 260px;
+}
+
+.dish-name-cell strong {
+  color: var(--dark-charcoal, #171717);
+  font-size: 14px;
+}
+
+.dish-desc-snippet {
+  font-size: 12px;
+  color: var(--secondary-text, #737373);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.category-tag-pill {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-orange, #F97316);
+  background-color: var(--warm-cream, #FFF7ED);
+  padding: 4px 10px;
+  border-radius: var(--radius-full, 9999px);
+  border: 1px solid var(--border-warm, #FED7AA);
+  display: inline-block;
+}
+
+.dish-table-price {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--dark-charcoal, #171717);
+}
+
+/* Availability Toggle */
+.availability-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.availability-toggle-btn.available {
+  background-color: var(--success-green-light, #DCFCE7);
+  color: var(--success-green, #22A06B);
+  border: 1px solid #BBF7D0;
+}
+.availability-toggle-btn.available .toggle-dot {
+  background-color: var(--success-green, #22A06B);
+}
+
+.availability-toggle-btn.out-of-stock {
+  background-color: #F3F4F6;
+  color: #6B7280;
+  border: 1px solid #E5E7EB;
+}
+.availability-toggle-btn.out-of-stock .toggle-dot {
+  background-color: #9CA3AF;
+}
+
+.toggle-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.delete-dish-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: none;
+  border: 1px solid transparent;
+  color: #9CA3AF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-dish-btn:hover {
+  background-color: #FEF2F2;
+  color: #DC2626;
+  border-color: #FECACA;
+}
+
+/* Delete Modal */
+.delete-modal-card {
+  background-color: var(--white, #FFFFFF);
+  border-radius: var(--radius-xl, 24px);
+  padding: 32px;
+  max-width: 440px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.delete-modal-card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--dark-charcoal, #171717);
+  margin-bottom: 8px;
+}
+
+.delete-modal-card p {
+  font-size: 14px;
+  color: var(--secondary-text, #737373);
+  margin-bottom: 24px;
+}
+
+.delete-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn-cancel {
+  padding: 10px 20px;
+  border-radius: var(--radius-full, 9999px);
+  background-color: var(--cream-surface, #FAFAF9);
+  border: 1.5px solid var(--border-subtle, #E5E7EB);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark-charcoal, #171717);
+}
+
+.btn-confirm-delete {
+  padding: 10px 20px;
+  border-radius: var(--radius-full, 9999px);
+  background-color: #DC2626;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white, #FFFFFF);
+}
+
+.btn-confirm-delete:hover {
+  background-color: #B91C1C;
+}
+
+/* Image preview modal */
+.image-preview-modal-card {
+  background-color: var(--white, #FFFFFF);
+  border-radius: var(--radius-xl, 24px);
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.large-preview-img {
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: var(--radius-lg, 18px);
+  margin-bottom: 12px;
+}
+
+.empty-inventory-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--secondary-text, #737373);
+}
+
+.empty-inventory-state h3 {
+  font-size: 18px;
+  color: var(--dark-charcoal, #171717);
+  margin-bottom: 6px;
+}

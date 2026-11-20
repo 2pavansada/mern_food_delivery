@@ -1,0 +1,149 @@
+:root {
+  /* BITEZY Admin Theme Tokens */
+  --primary-orange: #F97316;
+  --primary-orange-hover: #EA580C;
+  --primary-orange-light: #FFEDD5;
+  --primary-orange-subtle: #FFF7ED;
+  --dark-charcoal: #171717;
+  --charcoal-surface: #1E1E1E;
+  --charcoal-soft: #262626;
+  --sidebar-bg: #171717;
+  --warm-cream: #FFF7ED;
+  --cream-surface: #FAFAF9;
+  --white: #FFFFFF;
+  --success-green: #22A06B;
+  --success-green-light: #DCFCE7;
+  --warning-amber: #F59E0B;
+  --warning-amber-light: #FEF3C7;
+  --info-blue: #2563EB;
+  --info-blue-light: #EFF6FF;
+  --danger-red: #DC2626;
+  --danger-red-light: #FEF2F2;
+  --secondary-text: #737373;
+  --muted-text: #A3A3A3;
+  --border-light: #F3F4F6;
+  --border-subtle: #E5E7EB;
+  --border-warm: #FED7AA;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #F8FAFC;
+  color: var(--dark-charcoal);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: var(--transition);
+}
+
+input, select, textarea {
+  font-family: inherit;
+  outline: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Layout */
+.admin-layout-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.admin-body-container {
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+}
+
+.admin-main-viewport {
+  flex-grow: 1;
+  padding: 32px;
+  max-width: 1400px;
+  overflow-y: auto;
+  min-height: calc(100vh - 72px);
+}
+
+/* Common Admin Badges */
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-badge.green {
+  background-color: var(--success-green-light);
+  color: var(--success-green);
+}
+
+.admin-badge.amber {
+  background-color: var(--warning-amber-light);
+  color: var(--warning-amber);
+}
+
+.admin-badge.blue {
+  background-color: var(--info-blue-light);
+  color: var(--info-blue);
+}
+
+.admin-badge.orange {
+  background-color: var(--warm-cream);
+  color: var(--primary-orange);
+  border: 1px solid var(--border-warm);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .admin-main-viewport {
+    padding: 20px 16px;
+  }
+}
