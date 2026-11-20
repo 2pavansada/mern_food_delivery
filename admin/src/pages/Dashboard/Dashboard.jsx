@@ -319,8 +319,8 @@ const Dashboard = ({ url }) => {
                 <strong>MongoDB Atlas</strong>
               </div>
               <div className="platform-info-row">
-                <span>API Server</span>
-                <strong className="text-green">HTTP Port 4000</strong>
+                <span>API Status</span>
+                <strong className="text-green">Connected</strong>
               </div>
             </div>
           </div>

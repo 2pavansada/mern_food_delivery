@@ -42,7 +42,7 @@ const LoginPopup = ({ setShowLogin }) => {
       }
     } catch (error) {
       console.error(error);
-      setErrorMsg("Could not connect to the backend server. Please verify the backend is running on port 4000.");
+      setErrorMsg("Could not connect to the backend server. Please check your connection and try again.");
     } finally {
       setIsLoading(false);
     }

@@ -10,8 +10,18 @@ import Customers from './pages/Customers/Customers';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const getApiUrl = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL.replace(/\/+$/, '');
+  }
+  if (import.meta.env.DEV) {
+    return 'http://localhost:4000';
+  }
+  return '';
+};
+
 const App = () => {
-  const url = 'http://localhost:4000';
+  const url = getApiUrl();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const toggleSidebar = () => {

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 import BitezyLogo from '../BitezyLogo/BitezyLogo';
 
 const Navbar = ({ toggleSidebar, sidebarCollapsed }) => {
   const [profileOpen, setProfileOpen] = useState(false);
+  const frontendUrl = import.meta.env.VITE_FRONTEND_URL || (import.meta.env.DEV ? 'http://localhost:5173' : '/');
 
   return (
     <header className="admin-navbar-header">
@@ -22,9 +24,9 @@ const Navbar = ({ toggleSidebar, sidebarCollapsed }) => {
           </svg>
         </button>
 
-        <a href="/" className="admin-brand-link">
+        <Link to="/" className="admin-brand-link">
           <BitezyLogo size="sm" showAdminBadge={true} />
-        </a>
+        </Link>
       </div>
 
       <div className="admin-navbar-right">
@@ -36,7 +38,7 @@ const Navbar = ({ toggleSidebar, sidebarCollapsed }) => {
 
         {/* View Customer App Link */}
         <a 
-          href="http://localhost:5173" 
+          href={frontendUrl} 
           target="_blank" 
           rel="noopener noreferrer" 
           className="view-store-btn"
@@ -75,7 +77,7 @@ const Navbar = ({ toggleSidebar, sidebarCollapsed }) => {
                 <p>admin@bitezy.com</p>
               </div>
               <hr className="admin-dropdown-sep" />
-              <a href="http://localhost:5173" target="_blank" rel="noopener noreferrer" className="admin-dropdown-link">
+              <a href={frontendUrl} target="_blank" rel="noopener noreferrer" className="admin-dropdown-link">
                 <span>View Customer App</span>
                 <span className="shortcut-tag">↗</span>
               </a>

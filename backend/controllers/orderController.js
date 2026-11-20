@@ -7,7 +7,40 @@ import orderModel, {
 import userModel from './../models/userModel.js';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// Safe Stripe instance resolver
+const getStripeInstance = () => {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key || key === 'sk_test_placeholder' || key.startsWith('your_')) {
+    return null;
+  }
+  try {
+    return new Stripe(key);
+  } catch (err) {
+    console.warn("⚠️ Stripe initialization warning:", err.message);
+    return null;
+  }
+};
+
+// Dynamically resolve frontend URL from env or request headers
+const getFrontendUrl = (req) => {
+  if (process.env.FRONTEND_URL) {
+    return process.env.FRONTEND_URL.replace(/\/+$/, '');
+  }
+  if (req && req.headers) {
+    if (req.headers.origin) {
+      return req.headers.origin.replace(/\/+$/, '');
+    }
+    if (req.headers.referer) {
+      try {
+        const parsed = new URL(req.headers.referer);
+        return `${parsed.protocol}//${parsed.host}`;
+      } catch (e) {
+        // invalid referer url, fall through
+      }
+    }
+  }
+  return 'http://localhost:5173';
+};
 
 // Calculate estimated delivery time (e.g., 35-45 min from confirmation or dispatch)
 const calcEstimatedDelivery = (status) => {
@@ -31,7 +64,7 @@ const calcEstimatedDelivery = (status) => {
 // ─── Place Order ─────────────────────────────────────────────────────────────
 
 const placeOrder = async (req, res) => {
-  const frontend_url = 'http://localhost:5173';
+  const frontend_url = getFrontendUrl(req);
   try {
     const newOrder = new orderModel({
       userId: req.body.userId,
@@ -70,11 +103,8 @@ const placeOrder = async (req, res) => {
       quantity: 1,
     });
 
-    if (
-      !process.env.STRIPE_SECRET_KEY ||
-      process.env.STRIPE_SECRET_KEY === 'sk_test_placeholder' ||
-      process.env.STRIPE_SECRET_KEY.startsWith('your_')
-    ) {
+    const stripe = getStripeInstance();
+    if (!stripe) {
       console.log('Using Mock Payment Gateway (Stripe Key not configured)');
       const mockSessionUrl = `${frontend_url}/verify?success=true&orderId=${newOrder._id}`;
       return res.json({ success: true, session_url: mockSessionUrl });
@@ -88,7 +118,7 @@ const placeOrder = async (req, res) => {
     });
     res.json({ success: true, session_url: session.url });
   } catch (error) {
-    console.error(error);
+    console.error("Error placing order:", error.message);
     res.json({ success: false, message: 'Error placing order' });
   }
 };
@@ -98,7 +128,7 @@ const placeOrder = async (req, res) => {
 const verifyOrder = async (req, res) => {
   const { orderId, success } = req.body;
   try {
-    if (success === 'true') {
+    if (success === 'true' || success === true) {
       const updatedOrder = await orderModel.findById(orderId);
       if (updatedOrder) {
         updatedOrder.payment = true;
@@ -114,7 +144,7 @@ const verifyOrder = async (req, res) => {
       }
       res.json({ success: true, message: 'Paid' });
     } else {
-      // Instead of completely deleting, check if order can be marked Cancelled
+      // Instead of completely deleting, mark Cancelled
       await orderModel.findByIdAndUpdate(orderId, {
         status: 'Cancelled',
         payment: false,
@@ -129,7 +159,7 @@ const verifyOrder = async (req, res) => {
       res.json({ success: false, message: 'Not Paid' });
     }
   } catch (error) {
-    console.error(error);
+    console.error("Error verifying payment:", error.message);
     res.json({ success: false, message: 'Error verifying payment' });
   }
 };
@@ -155,8 +185,8 @@ const userOrders = async (req, res) => {
 
     res.json({ success: true, data: normalizedOrders });
   } catch (error) {
-    console.error(error);
-    res.json({ success: false, message: 'Error' });
+    console.error("Error fetching user orders:", error.message);
+    res.json({ success: false, message: 'Error fetching orders' });
   }
 };
 
@@ -196,7 +226,7 @@ const trackOrder = async (req, res) => {
 
     res.json({ success: true, data: order });
   } catch (error) {
-    console.error(error);
+    console.error("Error tracking order:", error.message);
     res.json({ success: false, message: 'Error fetching order' });
   }
 };
@@ -213,8 +243,8 @@ const listOrders = async (req, res) => {
     });
     res.json({ success: true, data: normalizedOrders });
   } catch (error) {
-    console.error(error);
-    res.json({ success: false, message: 'Error' });
+    console.error("Error listing orders for admin:", error.message);
+    res.json({ success: false, message: 'Error fetching order list' });
   }
 };
 
@@ -279,7 +309,7 @@ const updateStatus = async (req, res) => {
       data: updated 
     });
   } catch (error) {
-    console.error(error);
+    console.error("Error updating order status:", error.message);
     res.json({ success: false, message: 'Error updating status' });
   }
 };
@@ -296,7 +326,7 @@ const getAllowedStatuses = async (req, res) => {
     const allowed = ALLOWED_TRANSITIONS[current] || [];
     res.json({ success: true, currentStatus: current, allowedNext: allowed });
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching allowed statuses:", error.message);
     res.json({ success: false, message: 'Error' });
   }
 };

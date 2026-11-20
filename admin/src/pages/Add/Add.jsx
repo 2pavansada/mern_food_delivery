@@ -62,7 +62,7 @@ const Add = ({ url }) => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Could not connect to backend server. Make sure it is running on port 4000.");
+      toast.error("Could not connect to backend server. Please verify your connection or try again.");
     } finally {
       setIsSubmitting(false);
     }

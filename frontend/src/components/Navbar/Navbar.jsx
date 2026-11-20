@@ -15,6 +15,7 @@ const Navbar = ({ setShowLogin }) => {
   const { getTotalCartCount, token, setToken, searchQuery, setSearchQuery } = useContext(StoreContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const adminUrl = import.meta.env.VITE_ADMIN_URL || (import.meta.env.DEV ? 'http://localhost:5174' : '/admin');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -161,11 +162,11 @@ const Navbar = ({ setShowLogin }) => {
 
           {/* Admin Portal Direct Link */}
           <a
-            href="http://localhost:5174"
+            href={adminUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="navbar-admin-link"
-            title="Open BITEZY Admin Portal (Port 5174)"
+            title="Open BITEZY Admin Portal"
           >
             <span>⚙️ Admin</span>
           </a>
@@ -213,7 +214,7 @@ const Navbar = ({ setShowLogin }) => {
                     <span>My Orders</span>
                   </button>
                   <a
-                    href="http://localhost:5174"
+                    href={adminUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="dropdown-item"
@@ -273,7 +274,7 @@ const Navbar = ({ setShowLogin }) => {
               <a href="#footer" onClick={(e) => { e.preventDefault(); handleNavClick('contact', 'footer'); }}>Contact Us</a>
             </li>
             <li>
-              <a href="http://localhost:5174" target="_blank" rel="noopener noreferrer">⚙️ Admin Portal</a>
+              <a href={adminUrl} target="_blank" rel="noopener noreferrer">⚙️ Admin Portal</a>
             </li>
             {token ? (
               <>

@@ -129,7 +129,9 @@ const List = ({ url }) => {
               <tbody>
                 {filteredList.map((item) => {
                   const isAvailable = availabilityMap[item._id] !== false;
-                  const imgSrc = `${url}/images/${item.image}`;
+                  const imgSrc = (item.image && (item.image.startsWith('http://') || item.image.startsWith('https://') || item.image.startsWith('data:')))
+                    ? item.image
+                    : `${url}/images/${item.image}`;
 
                   return (
                     <tr key={item._id}>

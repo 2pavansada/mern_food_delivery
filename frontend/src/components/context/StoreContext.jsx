@@ -2,12 +2,22 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { food_list as initialFoodList } from "../../assets/assets";
 
+const getApiUrl = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL.replace(/\/+$/, '');
+  }
+  if (import.meta.env.DEV) {
+    return 'http://localhost:4000';
+  }
+  return '';
+};
+
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [food_list, setFoodList] = useState(initialFoodList || []);
   const [cartItems, setCartItems] = useState({});
-  const url = "http://localhost:4000";
+  const url = getApiUrl();
   const [token, setToken] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [promoCode, setPromoCode] = useState("");

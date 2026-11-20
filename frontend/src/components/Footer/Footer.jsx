@@ -5,6 +5,7 @@ import BitezyLogo from '../BitezyLogo/BitezyLogo';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const adminUrl = import.meta.env.VITE_ADMIN_URL || (import.meta.env.DEV ? 'http://localhost:5174' : '/admin');
   return (
     <footer className="footer-wrapper" id="footer">
       <div className="footer-container">
@@ -37,7 +38,7 @@ const Footer = () => {
               <li><a href="#food-display">Popular Dishes</a></li>
               <li><a href="#why-bitezy">Why Choose BITEZY</a></li>
               <li><Link to="/cart">My Cart</Link></li>
-              <li><a href="http://localhost:5174" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-orange, #F97316)', fontWeight: '700' }}>⚙️ Admin Portal</a></li>
+              <li><a href={adminUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-orange, #F97316)', fontWeight: '700' }}>⚙️ Admin Portal</a></li>
             </ul>
           </div>
 
